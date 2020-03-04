@@ -62,5 +62,10 @@ namespace TMDbLib.Objects.People
         [JsonProperty("profile_path")]
         public string ProfilePath { get; set; }
 
+        [JsonProperty("tagged_images")]
+        public SearchContainer<TaggedImage> TaggedImages { get; set; }
+
+        [JsonProperty("tv_credits")]
+        public TvCredits TvCredits { get; set; }
     }
 }

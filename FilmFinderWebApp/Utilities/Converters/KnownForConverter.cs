@@ -20,6 +20,8 @@ namespace TMDbLib.Utilities.Converters
             {
                 case MediaType.Movie:
                     return new KnownForMovie();
+                case MediaType.Tv:
+                    return new KnownForTv();
                 default:
                     throw new ArgumentOutOfRangeException();
             }

@@ -33,6 +33,9 @@ namespace TMDbLib.Utilities.Converters
                     case MediaType.Movie:
                         result = new SearchMovie();
                         break;
+                    case MediaType.Tv:
+                        result = new SearchTv();
+                        break;
                     case MediaType.Person:
                         result = new SearchPerson();
                         break;

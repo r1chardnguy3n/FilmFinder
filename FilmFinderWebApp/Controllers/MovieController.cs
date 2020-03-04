@@ -10,6 +10,7 @@ namespace FilmFinderWebApp.Controllers
     {
         public IActionResult Index()
         {
+             
             return View();
         }
     }
