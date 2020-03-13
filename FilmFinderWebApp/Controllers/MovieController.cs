@@ -1,17 +1,110 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using TMDbLib.Client;
+using TMDbLib.Objects.General;
+using TMDbLib.Objects.Movies;
+using TMDbLib.Objects.Search;
+using cloudscribe.Pagination.Models;
+
 
 namespace FilmFinderWebApp.Controllers
 {
     public class MovieController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-             
-            return View();
+           // string query = "thor";
+            TMDbClient client = new TMDbClient("02214396be00b0615b4005941508943d");
+
+            await FetchConfig(client);
+
+
+            return View(await FetchMovies(client, searchString, 3));
         }
+
+        public async Task<IActionResult> SearchMovie(string searchString, int page)
+        {
+            TMDbClient client = new TMDbClient("02214396be00b0615b4005941508943d");
+
+          
+            await FetchConfig(client);
+
+            Movie movie = new Movie();
+            SearchContainer<SearchMovie> results = await client.SearchMovieAsync(searchString, page);
+
+
+            var getMovies = (from result in results.Results
+                             select new
+                             {
+                                 Title = result.Title,
+                                 Id = result.Id
+
+                             }).ToList().Select(p => new Movie()
+                             {
+                                 Title = p.Title,
+                                 Id = p.Id
+                             });
+
+            var pagedMovie = new PagedResult<Movie>
+            {
+                Data = getMovies.ToList(),
+                TotalItems = results.TotalResults,
+                PageNumber = page,
+                PageSize = 20
+
+            };
+
+            return View(pagedMovie);
+        }
+
+        private static async Task FetchConfig(TMDbClient client)
+        {
+            FileInfo configJson = new FileInfo("config.json");
+
+            if (configJson.Exists && configJson.LastWriteTimeUtc >= DateTime.UtcNow.AddHours(-1)) 
+            {
+                string json = System.IO.File.ReadAllText(configJson.FullName, Encoding.UTF8);
+
+                client.SetConfig(JsonConvert.DeserializeObject<TMDbConfig>(json));
+                
+            }
+            else
+            {
+                var config = await client.GetConfigAsync();
+
+                string json = JsonConvert.SerializeObject(config);
+                System.IO.File.WriteAllText(configJson.FullName, json, Encoding.UTF8);
+            }
+        }
+
+        private static async Task<List<Movie>> FetchMovies(TMDbClient client, string query, int page)
+        {      
+
+            Movie movie = new Movie();
+            SearchContainer<SearchMovie> results = await client.SearchMovieAsync(query, page);
+
+       
+            var getMovies = (from result in results.Results
+                             select new
+                             {
+                                 Title = result.Title,
+                              
+                               
+                             }).ToList().Select(p => new Movie()
+                             {
+                                 Title = p.Title
+                             });
+
+
+            return getMovies.ToList();
+        }
+
+
     }
 }

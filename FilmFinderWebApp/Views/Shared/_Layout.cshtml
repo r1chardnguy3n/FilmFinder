@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - FilmFinderWebApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
 </head>
 <body>
     <header>
@@ -25,6 +26,17 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
+                </div>
+
+                <div class="col-sm-3 col-md-3 pull-left">
+                    <form method="get" action="@Url.Action("SearchMovie","Movie")">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search Movie" name="searchString">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </nav>

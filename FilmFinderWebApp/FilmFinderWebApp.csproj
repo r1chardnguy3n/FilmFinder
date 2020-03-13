@@ -5,6 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="cloudscribe.Pagination.Models" Version="1.0.5" />
+    <PackageReference Include="cloudscribe.Web.Pagination" Version="3.0.0" />
+    <PackageReference Include="FontAwesome" Version="4.7.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>

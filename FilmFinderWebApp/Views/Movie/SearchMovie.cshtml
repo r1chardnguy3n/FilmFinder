@@ -1,0 +1,21 @@
+﻿@using TMDbLib.Objects.Movies
+@model cloudscribe.Pagination.Models.PagedResult<Movie>
+@{
+    ViewData["Title"] = "SearchMovie";
+    ViewData["Controller"] = "Movie";
+    ViewData["Action"] = "SearchMovie";
+}
+
+<h1>SearchMovie</h1>
+
+<ul>
+    @foreach (var product in Model.Data)
+    {
+        <li>@product.Title</li>       
+    }
+    </ul>
+    <partial name="_PaginationPartial" model="Model"/>
+
+          
+
+<br />
