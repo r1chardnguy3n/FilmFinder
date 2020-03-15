@@ -19,48 +19,20 @@ namespace FilmFinderWebApp.Controllers
     {
         public async Task<IActionResult> Index(string searchString)
         {
-           // string query = "thor";
-            TMDbClient client = new TMDbClient("02214396be00b0615b4005941508943d");
+ 
 
-            await FetchConfig(client);
-
-
-            return View(await FetchMovies(client, searchString, 3));
+            return View();
         }
 
-        public async Task<IActionResult> SearchMovie(string searchString, int page)
+        public async Task<IActionResult> SearchMovie(string searchString, int? page)
         {
             TMDbClient client = new TMDbClient("02214396be00b0615b4005941508943d");
 
-          
+            var pageNumber = page ?? 1;
+
             await FetchConfig(client);
 
-            Movie movie = new Movie();
-            SearchContainer<SearchMovie> results = await client.SearchMovieAsync(searchString, page);
-
-
-            var getMovies = (from result in results.Results
-                             select new
-                             {
-                                 Title = result.Title,
-                                 Id = result.Id
-
-                             }).ToList().Select(p => new Movie()
-                             {
-                                 Title = p.Title,
-                                 Id = p.Id
-                             });
-
-            var pagedMovie = new PagedResult<Movie>
-            {
-                Data = getMovies.ToList(),
-                TotalItems = results.TotalResults,
-                PageNumber = page,
-                PageSize = 20
-
-            };
-
-            return View(pagedMovie);
+            return View(await FetchMovies(client, searchString, pageNumber));
         }
 
         private static async Task FetchConfig(TMDbClient client)
@@ -83,13 +55,13 @@ namespace FilmFinderWebApp.Controllers
             }
         }
 
-        private static async Task<List<Movie>> FetchMovies(TMDbClient client, string query, int page)
+        private static async Task<PagedResult<Movie>> FetchMovies(TMDbClient client, string query, int page)
         {      
 
             Movie movie = new Movie();
+            
             SearchContainer<SearchMovie> results = await client.SearchMovieAsync(query, page);
 
-       
             var getMovies = (from result in results.Results
                              select new
                              {
@@ -101,8 +73,15 @@ namespace FilmFinderWebApp.Controllers
                                  Title = p.Title
                              });
 
+            var pagedMovie = new PagedResult<Movie>
+            {
+                Data = getMovies.ToList(),
+                TotalItems = results.TotalResults,
+                PageNumber = page,
+                PageSize = 20
+            };
 
-            return getMovies.ToList();
+            return pagedMovie;
         }
 
 
