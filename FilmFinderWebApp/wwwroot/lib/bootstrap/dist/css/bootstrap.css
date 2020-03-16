@@ -574,15 +574,18 @@ pre code {
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px;
+
   }
 }
 
 .container-fluid {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+    width: 100%;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    
+}
 }
 
 .row {
@@ -4058,6 +4061,7 @@ input[type="button"].btn-block {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  
 }
 
 .nav-link {
@@ -4155,6 +4159,7 @@ input[type="button"].btn-block {
   -ms-flex-pack: justify;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+  
 }
 
 .navbar > .container,

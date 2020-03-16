@@ -11,7 +11,6 @@ a.navbar-brand {
 a {
   color: #0366d6;
 }
-
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
@@ -30,9 +29,10 @@ html {
   font-size: 14px;
 }
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+        
+    }
 }
 
 .border-top {
@@ -54,13 +54,19 @@ button.accept-policy {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    background-color: #bdd5d9;
+    
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    height: inherit;
+    background-image: url('../images/filmbackground3.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
 }
 .footer {
   position: absolute;
@@ -69,4 +75,6 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+
 

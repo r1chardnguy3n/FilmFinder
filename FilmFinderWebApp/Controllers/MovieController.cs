@@ -55,30 +55,6 @@ namespace FilmFinderWebApp.Controllers
             }
         }
 
-        private static void ProcessImages(TMDbClient client, IEnumerable<ImageData> images, IEnumerable<string> sizes)
-        {
-            // Displays basic information about each image, as well as all the possible adresses for it.
-            // All images should be available in all the sizes provided by the configuration.
-
-            foreach (ImageData imageData in images)
-            {
-                Console.WriteLine(imageData.FilePath);
-                Console.WriteLine("\t " + imageData.Width + "x" + imageData.Height);
-
-                // Calculate the images path
-                // There are multiple resizing available for each image, directly from TMDb.
-                // There's always the "original" size if you're in doubt which to choose.
-                foreach (string size in sizes)
-                {
-                    Uri imageUri = client.GetImageUrl(size, imageData.FilePath);
-                    Console.WriteLine("\t -> " + imageUri);
-                }
-
-                Console.WriteLine();
-            }
-        }
-
-
 
         private static async Task<PagedResult<Movie>> FetchMovies(TMDbClient client, string query, int page)
         {      
@@ -97,7 +73,7 @@ namespace FilmFinderWebApp.Controllers
                                
                              }).ToList().Select(p => new Movie()
                              {
-                                 Title = p.Title,
+                                 Title = p.Title,                              
                                  PosterPath = "https://image.tmdb.org/t/p/w200/"+ p.PosterPath,
                                  Id = p.Id
                              });
