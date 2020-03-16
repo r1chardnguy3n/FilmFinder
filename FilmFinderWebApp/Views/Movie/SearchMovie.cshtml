@@ -4,18 +4,17 @@
     ViewData["Title"] = "SearchMovie";
     ViewData["Controller"] = "Movie";
     ViewData["Action"] = "SearchMovie";
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/searchmovie.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
 }
 
 
 <div class="searchmovie">
-    <h1>SearchMovie</h1>
+    <h3>SearchMovie </h3>
     <div class="row">
         @foreach (var product in Model.Data)
         {
-            <div class="col-10 col-sm-5 col-md-3 col-lg-2">
+            <div class="col-sm-5 col-md-3 col-lg-2dot4">
                 <img src="@product.PosterPath" />
 
                 <h5>@product.Title</h5>

@@ -1,11 +1,66 @@
-﻿
+﻿.col-2dot4,
+.col-sm-2dot4,
+.col-md-2dot4,
+.col-lg-2dot4,
+.col-xl-2dot4 {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-2dot4 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+
+@media (min-width: 540px) {
+    .col-sm-2dot4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+}
+
+@media (min-width: 720px) {
+    .col-md-2dot4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+}
+
+@media (min-width: 960px) {
+    .col-lg-2dot4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+}
+
+@media (min-width: 1140px) {
+    .col-xl-2dot4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+}
+
 .searchmovie {
-    background-color: #00000099;
+    background-color: #1f2124;
+    margin-bottom: 50px;
     border-color: #baa036;
     border-style: solid;
     border-width: 5px;
-    margin-bottom: 5%;
     padding: 30px;
+    align-content: center;
 }
 img {
     background-image: url('../images/noposter.jpg');
@@ -16,11 +71,21 @@ img {
 
 .row{
     margin: 10px;
+    text-align:center;
 }
 
 
-h5{
-    color:white;
+h5 {
+    color: white;
+    text-align: center;
+    margin-top: 3px;
+    margin-bottom: 20px;
+}
+
+h3{
+    color: white;
+    margin-left: 25px;
+    margin-bottom: 30px;
 }
 
 

@@ -586,7 +586,7 @@ pre code {
     margin-left: auto;
     
 }
-}
+
 
 .row {
   display: -ms-flexbox;
@@ -4848,23 +4848,23 @@ input[type="button"].btn-block {
 }
 
 .page-link {
-  position: relative;
-  display: block;
-  padding: 0.5rem 0.75rem;
-  margin-left: -1px;
-  line-height: 1.25;
-  color: #007bff;
-  background-color: #fff;
-  border: 1px solid #dee2e6;
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #000000;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
 }
 
-.page-link:hover {
-  z-index: 2;
-  color: #0056b3;
-  text-decoration: none;
-  background-color: #e9ecef;
-  border-color: #dee2e6;
-}
+    .page-link:hover {
+        z-index: 2;
+        color: #ffc800;
+        text-decoration: none;
+        background-color: #54585c;
+        border-color: #54585c;
+    }
 
 .page-link:focus {
   z-index: 2;
@@ -4884,18 +4884,18 @@ input[type="button"].btn-block {
 }
 
 .page-item.active .page-link {
-  z-index: 1;
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+    z-index: 1;
+    color: #fff;
+    background-color: #ffc800;
+    border-color: #ffc800;
 }
 
 .page-item.disabled .page-link {
-  color: #6c757d;
-  pointer-events: none;
-  cursor: auto;
-  background-color: #fff;
-  border-color: #dee2e6;
+    color: #000000;
+    pointer-events: none;
+    cursor: auto;
+    background-color: #d7d9db;
+    border-color: #dee2e6;
 }
 
 .pagination-lg .page-link {
@@ -6583,7 +6583,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #343a40 !important;
+    background-color: #151617 !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
@@ -6613,7 +6613,7 @@ button.bg-dark:focus {
 }
 
 .border-bottom {
-  border-bottom: 1px solid #dee2e6 !important;
+    border-bottom: 1px solid #dbb323 !important;
 }
 
 .border-left {
