@@ -4,18 +4,33 @@
     ViewData["Title"] = "SearchMovie";
     ViewData["Controller"] = "Movie";
     ViewData["Action"] = "SearchMovie";
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/searchmovie.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
 }
 
 <h1>SearchMovie</h1>
 
-<ul>
+<div class="row">
     @foreach (var product in Model.Data)
     {
-        <li>@product.Title</li>       
-    }
-</ul>
-    <partial name="_PaginationPartial" model="Model"/>
+    <div class="col-md-5th-1 col-sm-4 col-md-offset-0 col-sm-offset-">
+        <img src="@product.PosterPath" , alt="sample" />
+        <h2><span>@product.Title</span></h2>
+    </div>
 
-          
+
+
+    }
+
+
+</div>
+
+
+
+
+<partial name="_PaginationPartial" model="Model" />
+
+
 
 <br />

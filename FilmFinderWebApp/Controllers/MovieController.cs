@@ -17,7 +17,7 @@ namespace FilmFinderWebApp.Controllers
 {
     public class MovieController : Controller
     {
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index()
         {
  
 
@@ -55,10 +55,35 @@ namespace FilmFinderWebApp.Controllers
             }
         }
 
+        private static void ProcessImages(TMDbClient client, IEnumerable<ImageData> images, IEnumerable<string> sizes)
+        {
+            // Displays basic information about each image, as well as all the possible adresses for it.
+            // All images should be available in all the sizes provided by the configuration.
+
+            foreach (ImageData imageData in images)
+            {
+                Console.WriteLine(imageData.FilePath);
+                Console.WriteLine("\t " + imageData.Width + "x" + imageData.Height);
+
+                // Calculate the images path
+                // There are multiple resizing available for each image, directly from TMDb.
+                // There's always the "original" size if you're in doubt which to choose.
+                foreach (string size in sizes)
+                {
+                    Uri imageUri = client.GetImageUrl(size, imageData.FilePath);
+                    Console.WriteLine("\t -> " + imageUri);
+                }
+
+                Console.WriteLine();
+            }
+        }
+
+
+
         private static async Task<PagedResult<Movie>> FetchMovies(TMDbClient client, string query, int page)
         {      
 
-            Movie movie = new Movie();
+            
             
             SearchContainer<SearchMovie> results = await client.SearchMovieAsync(query, page);
 
@@ -66,11 +91,15 @@ namespace FilmFinderWebApp.Controllers
                              select new
                              {
                                  Title = result.Title,
+                                 PosterPath = result.PosterPath,
+                                 Id = result.Id
                               
                                
                              }).ToList().Select(p => new Movie()
                              {
-                                 Title = p.Title
+                                 Title = p.Title,
+                                 PosterPath = "https://image.tmdb.org/t/p/w200/"+ p.PosterPath,
+                                 Id = p.Id
                              });
 
             var pagedMovie = new PagedResult<Movie>
@@ -80,6 +109,8 @@ namespace FilmFinderWebApp.Controllers
                 PageNumber = page,
                 PageSize = 20
             };
+
+            
 
             return pagedMovie;
         }
