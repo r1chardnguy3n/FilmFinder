@@ -66,12 +66,46 @@ img {
     background-image: url('../images/noposter.jpg');
     width: 200px;
     height: 300px;
-    border-radius: 10px
+    border-radius: 10px;
+    
 }
 
-.row{
-    margin: 10px;
-    text-align:center;
+.imagehover {
+    display:inline-block;
+    background-color: #a89292;
+    border-radius: 10px;
+}
+
+.imagehover img {
+    
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+}
+
+.imagehover:hover img {
+    opacity: 0.4;
+    
+}
+
+.img-moviedetail {
+    width: 300px;
+    height: 450px;
+    border-radius: 10px;
+    float:left;
+
+      
+}
+
+
+.row {
+    margin-top: 80px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 60px;
+    text-align: center;
+    min-height: 240px;
 }
 
 
@@ -82,12 +116,106 @@ h5 {
     margin-bottom: 20px;
 }
 
+h4{
+    color:white;
+}
 h3{
     color: white;
-    margin-left: 25px;
-    margin-bottom: 30px;
+    font-size: 45px;
 }
 
+p{
+    color:white;
+}
+
+
+span{
+    color: #dbb323;
+}
+
+.span_date {
+    color: #bfbfbf;
+    font-size: 15px;
+    
+}
+
+.searchresults{
+    margin-left:50px;
+    margin-top: 20px;
+}
+
+.resultTotal {
+    margin-top: 5px;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    border: 2px solid #dbb323;
+    padding: 10px;
+    max-width: 200px;
+}
+
+.resultTotalColour {
+    color: #a89292;
+}
+
+.moviedetail_container{
+    display: flex;
+}
+
+.movieinfo_container {
+    background-color: #161617;
+    border-radius: 10px;
+    border: 2px solid #dbb323;
+    padding-top: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 15px;
+    margin-left: 70px;
+    margin-right: 30px;
+    
+}
+
+.genre_container{
+display:flex;
+margin-top: 5px;
+}
+
+.genres {
+    color: #a89292;
+    margin-top: 3px;
+    margin-left: 15px;
+    font-size: 18px;
+}
+
+.cast_container {
+    background-color: #161617;
+    border-radius: 10px;
+    border: 2px solid #dbb323;
+    padding-top: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 15px;
+    margin-top: 50px;
+    margin-right: 30px;
+}
+
+/*Carousel Styling*/
+.carousel {
+    margin-bottom: 0;
+    padding: 0 40px 30px 40px;
+}
+
+.carousel-control {
+    color: #dbb323;
+    font-size: 40px;
+    padding: 50px;
+    
+}
+
+    .carousel-control:hover {
+        color: #a89292;
+    }
 
 
 

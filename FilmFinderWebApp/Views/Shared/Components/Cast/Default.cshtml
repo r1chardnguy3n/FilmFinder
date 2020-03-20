@@ -1,0 +1,53 @@
+﻿@using TMDbLib.Objects.Movies;
+@model Movie
+@{
+    <link rel="stylesheet" href="~/css/searchmovie.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="carousel slide" id="castCarousel" data-ride="carousel">
+            <div class="carousel-inner">
+                @{
+                    var getMovies = (from result in Model.Credits.Cast
+                                     select new
+                                     {
+                                         Name = result.Name,
+                                         ProfilePath = result.ProfilePath
+                                     }).ToList().Select(p => new Cast()
+                                     {
+                                         Name = p.Name,
+                                         ProfilePath = "https://image.tmdb.org/t/p/w200/" + p.ProfilePath,
+                                     });
+
+
+                    var items = getMovies.Take(6);
+                    var iteration = 0;
+                }
+                @while (items.Count() > 0)
+                {
+                    var active = iteration == 0 ? "active" : "";
+
+                    <div class="carousel-item @active">
+                        <div class="row">
+                            @foreach (var item in items)
+                            {
+                                <div class="col-md-2">
+                                    <img src="@item.ProfilePath" />
+                                    <h5>@item.Name</h5>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    iteration++;
+                    items = getMovies.Skip(6 * iteration).Take(6);
+                }
+
+            </div>
+        </div><!--.carousel-inner-->
+        <a data-slide="prev" href="#castCarousel" class="left carousel-control"><i class="fas fa-arrow-alt-circle-left"></i></a>
+        <a data-slide="next" href="#castCarousel" class="right carousel-control"><i class="fas fa-arrow-alt-circle-right"></i></a>
+    </div><!--.Carousel-->
+</div>

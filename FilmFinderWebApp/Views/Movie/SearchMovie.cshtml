@@ -10,19 +10,25 @@
 
 
 <div class="searchmovie">
-    <h3>SearchMovie </h3>
+
+    <div class="searchresults">
+        <h3>RESULTS FOR : <span>@ViewData["Query"]</span></h3>
+        <div class="resultTotal">
+            <h4><span class="resultTotalColour">@Model.TotalItems</span> RESULTS</h4>
+        </div>
+    </div>
+
     <div class="row">
         @foreach (var product in Model.Data)
         {
             <div class="col-sm-5 col-md-3 col-lg-2dot4">
-                <img src="@product.PosterPath" />
-
+                <a class="imagehover" href="@Url.Action("MovieDetails","Movie", new { movieId = @product.Id })">
+                    <img src="@product.PosterPath" />
+                </a>
+                
                 <h5>@product.Title</h5>
 
             </div>
-
-
-
         }
 
     </div>
@@ -32,7 +38,15 @@
 
 
 
-   
+
+
+
+
+
+
+
+
+
 
 
 

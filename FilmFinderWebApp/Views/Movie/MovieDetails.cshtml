@@ -1,0 +1,68 @@
+﻿@using TMDbLib.Objects.Movies
+@model Movie
+
+@{
+    ViewData["Title"] = "MovieDetails";
+    <link rel="stylesheet" href="~/css/searchmovie.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+}
+<div class="searchmovie">
+    <div class="moviedetail_container">
+        <!--Movie Image-->
+        <img class="img-moviedetail" src="https://image.tmdb.org/t/p/w300/@Model.PosterPath" />
+        <div class="movieinfo_container">
+            <!--Movie Title-->
+            <h3><Span>@Model.Title  </Span> <Span class="span_date">(@Convert.ToDateTime(Model.ReleaseDate).ToString("yyyy"))</Span></h3>
+            <!-- Movie Info-->
+            <p>@Model.Overview</p>
+            <div class="genre_container">
+                <h4>Genre</h4>
+                @foreach (var genre in Model.Genres)
+                {
+                    <p class="genres">@genre.Name,</p>
+                }
+            </div>
+            <div class="genre_container">
+                <h4>Rating</h4>
+                <p class="genres">@Model.VoteAverage</p>
+            </div>
+            <div class="genre_container">
+                <h4>Length</h4>
+                <p class="genres">@Model.Runtime min</p>
+            </div>
+            <div class="genre_container">
+                <h4>Release</h4>
+                <p class="genres">@Convert.ToDateTime(Model.ReleaseDate).ToString("yyyy-MM-dd")</p>
+            </div>
+            <div class="genre_container">
+                <h4>Country</h4>
+                @foreach (var countries in Model.ProductionCountries)
+                {
+                    <p class="genres">@countries.Name</p>
+                }
+            </div>
+            <div class="genre_container">
+                <h4>Director</h4>
+                @foreach (var crew in Model.Credits.Crew)
+                {
+                    if (crew.Job == "Director")
+                    {
+                        <p class="genres">@crew.Name</p>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    <!--Cast Info-->
+    <div class="cast_container">
+        <h3><span>Cast</span></h3>  
+        @await Component.InvokeAsync("Cast", Model.Id)
+    </div>
+
+
+
+</div>
+
+
+

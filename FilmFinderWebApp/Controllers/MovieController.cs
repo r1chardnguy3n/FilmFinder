@@ -17,6 +17,7 @@ namespace FilmFinderWebApp.Controllers
 {
     public class MovieController : Controller
     {
+        //Index Controller
         public async Task<IActionResult> Index()
         {
  
@@ -24,9 +25,17 @@ namespace FilmFinderWebApp.Controllers
             return View();
         }
 
+        //SearchMovie Controller
         public async Task<IActionResult> SearchMovie(string searchString, int? page)
         {
+
             TMDbClient client = new TMDbClient("02214396be00b0615b4005941508943d");
+
+            if(searchString == null)
+            {
+                searchString = "&! Invalid Search : Must Enter In Text !&";
+            }
+            ViewData["Query"] = searchString;
 
             var pageNumber = page ?? 1;
 
@@ -35,6 +44,16 @@ namespace FilmFinderWebApp.Controllers
             return View(await FetchMovies(client, searchString, pageNumber));
         }
 
+        //MovieDetail Controller
+        public async Task<IActionResult> MovieDetails(int movieId)
+        {
+            TMDbClient client = new TMDbClient("02214396be00b0615b4005941508943d");
+
+            return View(await FetchMovieDetails(client, movieId));
+        }
+
+
+        //Fetch Json
         private static async Task FetchConfig(TMDbClient client)
         {
             FileInfo configJson = new FileInfo("config.json");
@@ -55,12 +74,10 @@ namespace FilmFinderWebApp.Controllers
             }
         }
 
-
+        //Fetch Movies with search string
         private static async Task<PagedResult<Movie>> FetchMovies(TMDbClient client, string query, int page)
-        {      
+        {
 
-            
-            
             SearchContainer<SearchMovie> results = await client.SearchMovieAsync(query, page);
 
             var getMovies = (from result in results.Results
@@ -69,12 +86,11 @@ namespace FilmFinderWebApp.Controllers
                                  Title = result.Title,
                                  PosterPath = result.PosterPath,
                                  Id = result.Id
-                              
-                               
+
                              }).ToList().Select(p => new Movie()
                              {
-                                 Title = p.Title,                              
-                                 PosterPath = "https://image.tmdb.org/t/p/w200/"+ p.PosterPath,
+                                 Title = p.Title,
+                                 PosterPath = "https://image.tmdb.org/t/p/w200/" + p.PosterPath,
                                  Id = p.Id
                              });
 
@@ -84,13 +100,19 @@ namespace FilmFinderWebApp.Controllers
                 TotalItems = results.TotalResults,
                 PageNumber = page,
                 PageSize = 20
-            };
-
-            
+            };     
 
             return pagedMovie;
         }
 
+        //Fetch movie details for movie detail view
+        private static async Task<Movie> FetchMovieDetails(TMDbClient client, int movieId)
+        {
+            Movie movieDetails = await client.GetMovieAsync(movieId, MovieMethods.Credits);
 
+            return movieDetails;
+        }
     }
+    
+
 }
