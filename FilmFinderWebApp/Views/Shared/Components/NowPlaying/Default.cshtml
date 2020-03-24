@@ -1,0 +1,20 @@
+﻿@using TMDbLib.Objects.Movies;
+@model IEnumerable<Movie>
+
+<div class="row">
+   
+    @foreach (var results in Model)
+    {
+        <div class="image_container col-sm-5 col-md-4 col-lg-3 col-xl-2dot4">
+            <a class="imagehover" href="@Url.Action("MovieDetails","Movie", new { movieId = results.Id })">
+                <img src="@results.PosterPath" />
+            </a>
+
+            <h5>@results.Title</h5>
+
+        </div>
+    }
+
+</div>
+
+

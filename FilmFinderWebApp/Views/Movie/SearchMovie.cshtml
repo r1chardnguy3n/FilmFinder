@@ -19,17 +19,22 @@
     </div>
 
     <div class="row">
-        @foreach (var product in Model.Data)
-        {
-            <div class="col-sm-5 col-md-3 col-lg-2dot4">
-                <a class="imagehover" href="@Url.Action("MovieDetails","Movie", new { movieId = @product.Id })">
-                    <img src="@product.PosterPath" />
-                </a>
-                
-                <h5>@product.Title</h5>
+        
+            @foreach (var product in Model.Data)
+            {
+                <div class="image_container col-sm-5 col-md-4 col-lg-3 col-xl-2dot4">
+      
+                        <a class="imagehover" href="@Url.Action("MovieDetails","Movie", new { movieId = @product.Id })">
+                            <img src="@product.PosterPath" />
+                        </a>
 
-            </div>
-        }
+                        <h5>@product.Title</h5>
+
+                </div>
+
+            }
+        
+
 
     </div>
     <partial name="_PaginationPartial" model="Model" />

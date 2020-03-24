@@ -54,13 +54,14 @@
 }
 
 .searchmovie {
-    background-color: #1f2124;
+    background-color: #17181a;
     margin-bottom: 50px;
     border-color: #baa036;
+    border-radius: 10px;
     border-style: solid;
     border-width: 5px;
     padding: 30px;
-    align-content: center;
+    align-items:center;
 }
 img {
     background-image: url('../images/noposter.jpg');
@@ -99,14 +100,13 @@ img {
 }
 
 
-.row {
+.image_container {
     margin-top: 80px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 60px;
     text-align: center;
-    min-height: 240px;
+
+   
 }
+
 
 
 h5 {
@@ -137,6 +137,18 @@ span{
     color: #bfbfbf;
     font-size: 15px;
     
+}
+
+.homepagesection_container {
+    background-color: #2e2e2e;
+    border-radius: 10px;
+    border: 2px solid #dbb323;
+    padding-top: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 15px;
+    margin-left: 70px;
+    margin-right: 30px;
 }
 
 .searchresults{

@@ -11,24 +11,28 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FilmFinderWebApp</a>
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Movie" asp-action="Index">FilmFinderWebApp</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+
                 <div class="col-sm-3 col-md-3 pull-left">
                     <form method="get" action="@Url.Action("SearchMovie","Movie")">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search Movie" name="searchString" >
+                            <input type="text" class="form-control" placeholder="Search Movie" name="searchString">
                             <div class="input-group-btn">
-                                <button class="btn btn-default" id="searchButton" type="submit" ><i class="fas fa-search"></i></button>
+                                <button class="btn btn-default" id="searchButton" type="submit"><i class="fas fa-search"></i></button>
                             </div>
                         </div>
                     </form>
                 </div>
+
+                <partial name="_FilterPartial" />
             </div>
+     
         </nav>
     </header>
     <div class="container-fluid">

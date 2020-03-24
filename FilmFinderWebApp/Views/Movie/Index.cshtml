@@ -1,10 +1,26 @@
-﻿
-
+﻿@using TMDbLib.Objects.Movies
 @{
     ViewData["Title"] = "Index";
+    <link rel="stylesheet" href="~/css/searchmovie.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
 }
 
-<h1>Index</h1>
+<div class="searchmovie">
+    <div class="homepagesection_container">
+        <h3>Now Playing</h3>
+    </div>
+    @await Component.InvokeAsync("NowPlaying")
+
+    <div class="homepagesection_container">
+        <h3>Popular Movies</h3>
+    </div>
+    @await Component.InvokeAsync("Popular")
+
+    <div class="homepagesection_container">
+        <h3>Up Coming Movies</h3>
+    </div>
+    @await Component.InvokeAsync("UpComing")
+</div>
 
 
 

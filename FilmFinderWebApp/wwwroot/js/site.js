@@ -16,4 +16,29 @@ $(document).ready(function () {
     });
 });
 
-//Carousel
+//Filter Drop Down
+        function btnToggle() { 
+            document.getElementById("dropdown").classList.toggle("show"); 
+        } 
+          
+        // Prevents menu from closing when clicked inside 
+        document.getElementById("dropdown").addEventListener('click', function (event) { 
+            event.stopPropagation(); 
+        }); 
+          
+        // Closes the menu in the event of outside click 
+        window.onclick = function(event) { 
+            if (!event.target.matches('.dropdown-toggle')) { 
+              
+                var dropdowns =  
+                document.getElementsByClassName("dropdown-menu"); 
+                  
+                var i; 
+                for (i = 0; i < dropdowns.length; i++) { 
+                    var openDropdown = dropdowns[i]; 
+                    if (openDropdown.classList.contains('show')) { 
+                        openDropdown.classList.remove('show'); 
+                    } 
+                } 
+            } 
+        } 

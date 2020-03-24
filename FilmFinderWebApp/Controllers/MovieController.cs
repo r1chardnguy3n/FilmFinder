@@ -18,7 +18,7 @@ namespace FilmFinderWebApp.Controllers
     public class MovieController : Controller
     {
         //Index Controller
-        public async Task<IActionResult> Index()
+        public ActionResult Index()
         {
  
 
@@ -42,6 +42,14 @@ namespace FilmFinderWebApp.Controllers
             await FetchConfig(client);
 
             return View(await FetchMovies(client, searchString, pageNumber));
+        }
+
+        //FilterMovie Controller
+        public async Task<IActionResult> FilterMovie()
+        {
+            TMDbClient client = new TMDbClient("02214396be00b0615b4005941508943d");
+
+            return View();
         }
 
         //MovieDetail Controller

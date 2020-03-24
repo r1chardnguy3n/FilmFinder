@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TMDbLib.Client;
 using TMDbLib.Objects.Movies;
 
-namespace FilmFinderWebApp.Component
+namespace FilmFinderWebApp.ViewComponents
 {
     public class CastViewComponent : ViewComponent 
     {
