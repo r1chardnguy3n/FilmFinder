@@ -11,7 +11,8 @@ using TMDbLib.Objects.General;
 using TMDbLib.Objects.Movies;
 using TMDbLib.Objects.Search;
 using cloudscribe.Pagination.Models;
-
+using TMDbLib.Objects.Discover;
+using TMDbLib.Objects.Genres;
 
 namespace FilmFinderWebApp.Controllers
 {
@@ -45,11 +46,15 @@ namespace FilmFinderWebApp.Controllers
         }
 
         //FilterMovie Controller
-        public async Task<IActionResult> FilterMovie()
+        public async Task<IActionResult> FilterMovie(int[] genres, int? page, DiscoverMovieSortBy sortby, int year)
         {
             TMDbClient client = new TMDbClient("02214396be00b0615b4005941508943d");
 
-            return View();
+            var pageNumber = page ?? 1;
+
+            await FetchConfig(client);
+
+            return View(await FilterMovies(client,genres,pageNumber,sortby,year));
         }
 
         //MovieDetail Controller
@@ -98,7 +103,7 @@ namespace FilmFinderWebApp.Controllers
                              }).ToList().Select(p => new Movie()
                              {
                                  Title = p.Title,
-                                 PosterPath = "https://image.tmdb.org/t/p/w200/" + p.PosterPath,
+                                 PosterPath =  p.PosterPath,
                                  Id = p.Id
                              });
 
@@ -120,6 +125,38 @@ namespace FilmFinderWebApp.Controllers
 
             return movieDetails;
         }
+
+        //Discover Movie through filtering
+        private static async Task<PagedResult<Movie>> FilterMovies(TMDbClient client, int[] genre, int page, DiscoverMovieSortBy sortby,int year)
+        {
+            DiscoverMovie query =  client.DiscoverMoviesAsync().IncludeWithAllOfGenre(genre).WherePrimaryReleaseIsInYear(year).OrderBy(sortby);
+
+            SearchContainer<SearchMovie> results =  query.Query(page).Result;
+
+            var getMovies = (from result in results.Results                       
+                             select new
+                             {
+                                 Title = result.Title,
+                                 PosterPath = result.PosterPath,
+                                 Id = result.Id
+
+                             }).ToList().Select(p => new Movie()
+                             {
+                                 Title = p.Title,                        
+                                 PosterPath =  p.PosterPath,
+                                 Id = p.Id
+                             });
+            var pagedMovie = new PagedResult<Movie>
+            {
+                Data = getMovies.ToList(),
+                TotalItems = results.TotalResults,
+                PageNumber = page,
+                PageSize = 20
+            };
+
+            return  pagedMovie;
+        }
+
     }
     
 

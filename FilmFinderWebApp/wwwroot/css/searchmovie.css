@@ -56,19 +56,22 @@
 .searchmovie {
     background-color: #17181a;
     margin-bottom: 50px;
-    border-color: #baa036;
+    border-color: #90cea1;
     border-radius: 10px;
     border-style: solid;
     border-width: 5px;
     padding: 30px;
-    align-items:center;
+    align-items: center;
+    min-height: 800px;
 }
 img {
-    background-image: url('../images/noposter.jpg');
+    border-radius: 10px; 
+}
+
+.movieapi_image{
+    background-image: none;
     width: 200px;
-    height: 300px;
-    border-radius: 10px;
-    
+    height: 60px;
 }
 
 .imagehover {
@@ -91,11 +94,9 @@ img {
 }
 
 .img-moviedetail {
-    width: 300px;
-    height: 450px;
     border-radius: 10px;
     float:left;
-
+    margin-bottom: 20px;
       
 }
 
@@ -129,8 +130,8 @@ p{
 }
 
 
-span{
-    color: #dbb323;
+span {
+    color: #90cea1;
 }
 
 .span_date {
@@ -142,13 +143,14 @@ span{
 .homepagesection_container {
     background-color: #2e2e2e;
     border-radius: 10px;
-    border: 2px solid #dbb323;
+    border: 2px solid #82b8ac;
     padding-top: 15px;
     padding-left: 40px;
     padding-right: 40px;
     padding-bottom: 15px;
-    margin-left: 70px;
+    margin-left: 30px;
     margin-right: 30px;
+    margin-top: 30px;
 }
 
 .searchresults{
@@ -162,7 +164,7 @@ span{
     flex-direction: row;
     flex-wrap: wrap;
     border-radius: 10px;
-    border: 2px solid #dbb323;
+    border: 2px solid #90cea1;
     padding: 10px;
     max-width: 200px;
 }
@@ -172,19 +174,18 @@ span{
 }
 
 .moviedetail_container{
-    display: flex;
+    display:flex;
 }
 
 .movieinfo_container {
     background-color: #161617;
     border-radius: 10px;
-    border: 2px solid #dbb323;
+    border: 2px solid #82b8ac;
     padding-top: 15px;
     padding-left: 40px;
     padding-right: 40px;
     padding-bottom: 15px;
-    margin-left: 70px;
-    margin-right: 30px;
+    margin-right: 40px;
     
 }
 
@@ -203,7 +204,7 @@ margin-top: 5px;
 .cast_container {
     background-color: #161617;
     border-radius: 10px;
-    border: 2px solid #dbb323;
+    border: 2px solid #82b8ac;
     padding-top: 15px;
     padding-left: 40px;
     padding-right: 40px;
@@ -229,5 +230,8 @@ margin-top: 5px;
         color: #a89292;
     }
 
+i {
+    color: #829aa1;
+}
 
 

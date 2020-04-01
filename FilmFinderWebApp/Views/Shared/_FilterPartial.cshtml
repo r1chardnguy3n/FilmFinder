@@ -6,47 +6,101 @@
 <div class="dropdown navbar-collapse js-navbar-collapse">
 
 
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav ">
         <li class="dropdown dropdown-large">
             <button type="button" class="btn btn-primary dropdown-toggle"  onclick="btnToggle()">
-                Dropdown button
+                <i class="fas fa-filter"></i> Filter
             </button>
 
-            <div id="dropdown" class="container-fluid dropdown-menu dropdown-menu-large">
+            <div id="dropdown" class="container-fluid dropdown-menu dropdown-menu-large ">
+                <form method="get" action="@Url.Action("FilterMovie","Movie")">
+                    <div class="row">
+                        <div class="col-sm">
+                            <h2 class="dropdown-header">Sort by</h2>
+                            <ul class="sortby_ul">
+                                <li class="sortby_li">
+                                    <input class="input_radio" type='radio' value='PopularityDesc' name='sortby' id='radio1' checked />
+                                    <label for='radio1'><i class="fas fa-thumbs-up"></i> Popularity</label>
+                                </li>
+                                <li class="sortby_li">
+                                    <input class="input_radio" type='radio' value='VoteAverageDesc' name='sortby' id='radio2' />
+                                    <label for='radio2'><i class="fas fa-star-half-alt"></i> Ratings</label>
+                                </li>
+                                <li class="sortby_li">
+                                    <input class="input_radio" type='radio' value='ReleaseDateDesc' name='sortby' id='radio4' />
+                                    <label for='radio4'><i class="fas fa-calendar-alt"></i> Release Date</label>
+                                </li>
+                            </ul>
+                        </div>
 
-                <ul class="row">
-                    <li class="col-sm dropdown-header">
-                        Sort by
-                        <ul class="sortby_ul">
-                            <li class="sortby_li" >
-                                <input type='radio' value='1' name='radio' id='radio1' />
-                                <label for='radio1'>Value 1</label>
-                            </li>
-                            <li class="sortby_li">
-                                <input type='radio' value='2' name='radio' id='radio2' />
-                                <label for='radio2'>Value 2</label>
-                            </li>
-                            <li class="sortby_li">
-                                <input type='radio' value='3' name='radio' id='radio3' />
-                                <label for='radio3'>Value 3</label>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="col-sm dropdown-header">
-                        Genre
-                    </li>
-                    <li class="col-sm dropdown-header">
-                        Release
-                    </li>
-                </ul>
+                        <div class="col-sm-5 ">
+                            <h2 class="dropdown-header">Genres</h2>
+                            <div class="container-fluid">
+                                <div class="row filtergenrecontainer">
 
+                                    <p class="col-sm">
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="28" /> Action</label>
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="12" /> Adventure</label>
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="16" /> Animation</label>
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="35" /> Comedy</label>
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="80" /> Crime</label>
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="99" /> Documentary</label>
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="18" /> Drama</label>
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="10751" /> Family</label>
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="14" /> Fantasy</label>
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="36" /> History</label>
+                                    </p>
+                                    <p class="col-sm">
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="27" /> Horror</label>
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="10402" /> Music</label>
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="9648" /> Mystery</label>
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="10749" /> Romance</label>
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="878" /> Science Fiction</label>
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="10770" /> TV Movie</label>
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="53" /> Thriller</label>
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="10752" /> War</label>
+                                        <label class="checkbox_label"><input type="checkbox" name="genres" value="37" /> Western</label>
+                                    </p>
+                                </div>
+                            </div>
 
+                        </div>
+                        <div class="col-sm">
+                            <h2 class="dropdown-header">Release</h2>
+                            <div class="container-fluid">
+                                <div class="row filtergenrecontainer">
+                                    <p class="col-sm">
+                                        <label class="checkbox_label"><input type="radio" name="year" value="2020" /> 2020</label>
+                                        <label class="checkbox_label"><input type="radio" name="year" value="2019" /> 2019</label>
+                                        <label class="checkbox_label"><input type="radio" name="year" value="2018" /> 2018</label>
+                                        <label class="checkbox_label"><input type="radio" name="year" value="2017" /> 2017</label>
+                                        <label class="checkbox_label"><input type="radio" name="year" value="2016" /> 2016</label>
+                                        <label class="checkbox_label"><input type="radio" name="year" value="2015" /> 2015</label>
+                                        <label class="checkbox_label"><input type="radio" name="year" value="" />All</label>
+                                    </p>
 
+                                </div>
+                            </div>
 
+                        </div>
 
+                    </div>
 
-
-
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col">
+                                <button class="btn btn-default" id="filterButton" type="submit" >Filter Movies</button>
+                            </div>
+                            <div class="col">
+                                <p></p>
+                            </div>
+                            <div class="col">
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </form>               
             </div>
 
 

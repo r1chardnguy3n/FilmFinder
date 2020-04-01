@@ -1,6 +1,7 @@
 ﻿
 .dropdown-large {
     position: static !important;
+    
 }
 
 .dropdown-menu-large {
@@ -8,7 +9,8 @@
     margin-right: 16px;
     background-color: #2e2e2e;
     border-radius: 10px;
-    border: 2px solid #dbb323;
+    border: 2px solid #90cea1;
+    padding-right: 10px;
 }
 
 .dropdown-menu-large > li > ul {
@@ -51,10 +53,10 @@ filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 cursor: not-allowed;
 }
 
-.dropdown-menu-large .dropdown-header {
-    color: #dbb323;
-    font-size: 25px;
-}
+    .dropdown-menu-large .dropdown-header {
+        color: #90cea1;
+        font-size: 25px;
+    }
 
 @media (max-width: 768px) {
     .dropdown-menu-large {
@@ -78,21 +80,55 @@ cursor: not-allowed;
 /*sort by*/
 .sortby_ul {
     list-style: none;
+    padding-left: 10px;
 }
 
 .sortby_li {
-    display: inline-block;
-    margin-right: 15px;
+    color: #a89292;
+    margin-bottom: 5px;
+    margin-left: 5px;
 }
 
-input {
-    visibility: hidden;
+.input_radio {
+    visibility: hidden;   
+}
+i{
+    color:white;
 }
 
 label {
     cursor: pointer;
+    background: #242424;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 2px solid #82b8ac;
+    display: inherit;
+    padding-left: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.checkbox_label {
+    cursor: pointer;
+    border: none;
+    font-weight: normal;
+    color: #a89292;  
+    display:inherit;
 }
 
 input:checked + label {
-    background: red;
+    background: #90cea1;
+    border: 2px solid #ffffff;
+    color: white;
+}
+
+/*Genre*/
+.filtergenrecontainer {
+    border-radius: 10px;
+    border: 2px solid #82b8ac;
+    background: #242424;
+    padding-top: 5px;
+    margin-top: 10px;
+    display: flex;
 }

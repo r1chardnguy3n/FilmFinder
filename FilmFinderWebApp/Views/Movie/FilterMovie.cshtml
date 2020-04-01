@@ -1,7 +1,62 @@
-﻿
+﻿@using TMDbLib.Objects.Movies
+@model cloudscribe.Pagination.Models.PagedResult<Movie>
 @{
     ViewData["Title"] = "FilterMovie";
+    ViewData["Controller"] = "Movie";
+    ViewData["Action"] = "FilterMovie";
+    <link rel="stylesheet" href="~/css/searchmovie.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
 }
 
-<h1>FilterMovie</h1>
+
+<div class="searchmovie">
+
+    <div class="searchresults">
+        <h3>Filtered Results</h3>
+        <div class="resultTotal">
+            <h4><span class="resultTotalColour">@Model.TotalItems</span> RESULTS</h4>
+        </div>
+    </div>
+
+    <div class="row">
+
+        @foreach (var product in Model.Data)
+        {
+            <div class="image_container col-sm-5 col-md-4 col-lg-3 col-xl-2dot4">
+
+                <a class="imagehover" href="@Url.Action("MovieDetails","Movie", new { movieId = @product.Id })">
+                    @if (product.PosterPath == null)
+                    {
+                        <img src="~/images/noposteravailable200.png" />
+                    }
+                    else
+                    {
+                        <img src="https://image.tmdb.org/t/p/w200/@product.PosterPath" />
+                    }
+
+                </a>
+
+                <h5>@product.Title</h5>
+
+            </div>
+
+        }
+
+
+
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col">
+                <p> </p>
+            </div>
+            <div class="col justify-content-center">
+                <partial name="_PaginationPartial" model="Model" />
+            </div>
+            <div class="col">
+                <p> </p>
+            </div>
+        </div>
+    </div>
+</div>
 

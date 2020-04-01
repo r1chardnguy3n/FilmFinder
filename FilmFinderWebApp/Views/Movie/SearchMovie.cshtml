@@ -9,7 +9,7 @@
 }
 
 
-<div class="searchmovie">
+<div class="searchmovie ">
 
     <div class="searchresults">
         <h3>RESULTS FOR : <span>@ViewData["Query"]</span></h3>
@@ -24,9 +24,17 @@
             {
                 <div class="image_container col-sm-5 col-md-4 col-lg-3 col-xl-2dot4">
       
-                        <a class="imagehover" href="@Url.Action("MovieDetails","Movie", new { movieId = @product.Id })">
-                            <img src="@product.PosterPath" />
-                        </a>
+                    <a class="imagehover" href="@Url.Action("MovieDetails","Movie", new { movieId = @product.Id })">
+                        @if (product.PosterPath == null)
+                        {
+                            <img src="~/images/noposteravailable200.png" />
+                        }
+                        else
+                        {
+                            <img src="https://image.tmdb.org/t/p/w200/@product.PosterPath" />
+                        }
+
+                    </a>
 
                         <h5>@product.Title</h5>
 
@@ -37,7 +45,23 @@
 
 
     </div>
-    <partial name="_PaginationPartial" model="Model" />
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col">
+                <p> </p>
+            </div>
+            <div class="col justify-content-center">
+                <partial name="_PaginationPartial" model="Model" />
+            </div>
+            <div class="col">
+                <p> </p>
+            </div>
+        </div>
+    </div>
+        
+
+    
 </div>
 
 

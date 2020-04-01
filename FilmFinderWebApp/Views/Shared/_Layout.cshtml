@@ -3,16 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - FilmFinderWebApp</title>
+    <title>@ViewData["Title"] - FilmFinder</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+    <link rel="icon" href="~/images/film-icon.svg" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Movie" asp-action="Index">FilmFinderWebApp</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Movie" asp-action="Index"><span class="logo">FilmFinder </span><i class="fas fa-film fa-lg"></i></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,17 +21,19 @@
 
 
                 <div class="col-sm-3 col-md-3 pull-left">
+                    
                     <form method="get" action="@Url.Action("SearchMovie","Movie")">
-                        <div class="input-group">
+                        <div class="input-group ">
                             <input type="text" class="form-control" placeholder="Search Movie" name="searchString">
                             <div class="input-group-btn">
                                 <button class="btn btn-default" id="searchButton" type="submit"><i class="fas fa-search"></i></button>
                             </div>
                         </div>
                     </form>
-                </div>
 
+                </div>
                 <partial name="_FilterPartial" />
+
             </div>
      
         </nav>
@@ -42,7 +45,15 @@
     </div>
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - FilmFinderWebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row">
+                <img class="movieapi_image col-sm" src="~/images/themoviedbapi.svg" />
+                <div class="col-sm">
+                    &copy; 2020 - FilmFinder, Website Created by <a href="https://www.richardnguyen.co/">Richard Nguyen</a>
+                </div>
+               
+
+            </div>
+           
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
